@@ -9,6 +9,9 @@ uLCD_4DGL uLCD(D1, D0, D2); // serial tx, serial rx, reset pin;
 
 PwmOut PWM1(D6);
 
+DigitalIn  sense(D7);
+
+Serial pc( USBTX, USBRX );
 
 int main() {
 
@@ -38,6 +41,7 @@ int main() {
             counter = 0;
         }
         counter++;
+        pc.printf("%1.3f\r\n", sense);
     }
     
 
@@ -64,6 +68,30 @@ int main()
     uLCD.line(60, 60, 60, 40, WHITE);
     uLCD.line(60, 40, 40, 40, WHITE);
  
+
+}
+
+*/
+
+/*
+Serial pc( USBTX, USBRX );
+
+AnalogIn Ain(A0);
+
+float ADCdata;
+
+
+int main(){
+
+  while(1){
+
+    ADCdata = Ain;
+
+    wait(0.5);
+
+    pc.printf("%1.3f\r\n", ADCdata);
+
+  }
 
 }
 
